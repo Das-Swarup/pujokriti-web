@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { isApkAvailable } from "@/lib/apk";
-import {
-  privacyPolicyReviewItems,
-  privacyPolicySections,
-} from "@/lib/privacy-policy-content";
+import { privacyPolicySections } from "@/lib/privacy-policy-content";
 import { siteConfig } from "@/lib/site-config";
 import logo from "@/assets/pujokriti-logo.png";
 
@@ -15,9 +12,11 @@ const canonicalUrl = new URL("/privacy-policy", siteConfig.canonicalUrl).toStrin
 export const metadata: Metadata = {
   title: "Privacy Policy | Pujokriti",
   description:
-    "Read how Pujokriti's Android application and website may process information, and review the details still awaiting publisher confirmation.",
+    "Read how Pujokriti's reviewed pandal-discovery and navigation flow processes location, route, and service request information.",
   alternates: { canonical: canonicalUrl },
-  robots: policyConfig.draft ? { index: false, follow: false } : { index: true, follow: true },
+  robots: policyConfig.contactEmail
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 function displayDate(value: string) {
@@ -62,8 +61,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 We believe privacy information should be clear, accessible, and honest. This
-                document distinguishes what could be checked in the supplied release APK from
-                practices that still require confirmation from the application publisher.
+                policy describes the reviewed public browsing and navigation flow and the
+                providers it uses.
               </p>
             </div>
             <div className="policy-dates">
@@ -93,26 +92,6 @@ export default function PrivacyPolicyPage() {
               </ol>
             </nav>
           </details>
-
-          {policyConfig.draft && (
-            <aside aria-labelledby="policy-review-heading" className="policy-review">
-              <p className="policy-review-label">DRAFT · NOT READY FOR PUBLICATION</p>
-              <h2 id="policy-review-heading">Publisher review required</h2>
-              <p>
-                The supplied project contains the website and a compiled APK, but not the
-                Android source code, Supabase schema or policies, or operational retention
-                configuration. This draft does not present unverified app or backend behavior as
-                fact. Confirm every item below, update this policy, and complete the fields
-                before making it final.
-              </p>
-              <details className="policy-review-details">
-                <summary>Items requiring confirmation ({privacyPolicyReviewItems.length})</summary>
-                <ul>
-                  {privacyPolicyReviewItems.map((item) => <li key={item}>{item}</li>)}
-                </ul>
-              </details>
-            </aside>
-          )}
 
           <div className="policy-layout" id="policy-content">
             <aside aria-label="Policy sections" className="policy-toc-desktop">
@@ -162,7 +141,9 @@ export default function PrivacyPolicyPage() {
                     <dl className="policy-contact">
                       <div>
                         <dt>Publisher</dt>
-                        <dd>{policyConfig.publisherName || "[PUBLISHER LEGAL NAME]"}</dd>
+                        <dd>
+                          {policyConfig.publisherName}, trading as {policyConfig.tradeName}
+                        </dd>
                       </div>
                       <div>
                         <dt>Business address</dt>
@@ -176,7 +157,7 @@ export default function PrivacyPolicyPage() {
                               {policyConfig.contactEmail}
                             </a>
                           ) : (
-                            "[PRIVACY CONTACT EMAIL]"
+                            "[PRIVACY CONTACT EMAIL — REQUIRED BEFORE PUBLICATION]"
                           )}
                         </dd>
                       </div>

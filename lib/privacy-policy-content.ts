@@ -11,44 +11,45 @@ export const privacyPolicySections: PolicySection[] = [
     id: "who-we-are",
     title: "Who We Are",
     paragraphs: [
-      "Pujokriti is a Durga Puja discovery application intended to help people explore pandals, view locations on a map, and access related cultural features. The Android package supplied for this review identifies the application as com.siligurisutra.pujokriti.",
-      "The publisher's legal name and any required business address have not been provided. The responsible publisher must be identified before this policy is published as final.",
+      "Pujokriti is a Durga Puja discovery application published by Arijit Roy, trading as Siliguri Sutra. The publisher's address is Saradapally, Tilak Sadhu More, Siliguri, West Bengal – 734006.",
+      "The Android application package identifier is com.siligurisutra.pujokriti.",
     ],
   },
   {
     id: "information-we-collect",
     title: "Information We Collect",
     paragraphs: [
-      "The information involved depends on the app feature used and the permissions granted. The available website repository does not contain the Android app source, Supabase schema, row-level security rules, or server configuration. The APK can show declared permissions and bundled references, but cannot establish every active data flow.",
-      "The supplied APK declares internet access and foreground coarse and fine location permissions. A permission declaration means the app may request that access; it does not by itself show when the prompt appears or whether location is sent to a server.",
-      "The APK also declares biometric, NFC, and basic phone-state permissions. The manifest alone does not establish whether the app reads related information or which features use these permissions; the publisher must verify their purpose and data flows.",
-      "The app bundle contains Supabase and sign-in references, along with terms related to reports and groups. The available materials do not establish which account fields, user-submitted details, or group data are actually collected or stored. These details need publisher verification before publication.",
-      "No analytics or crash-reporting practice could be confirmed from the available website source and packaged APK inspection. The website's declared dependencies do not include a dedicated analytics SDK. This is not confirmation that no service-side logging or app telemetry occurs.",
+      "The public pandal-browsing and navigation flow does not require registration or a user profile. This describes that reviewed flow only; it is not a statement that every feature of the application is account-free.",
+      "When you choose nearby results or route planning, the app sends location coordinates to Supabase for nearby published-pandal queries and to the relevant place or routing service for the request. When you browse without device location permission, you can still explore areas and select map locations manually.",
+      "The app stores active route progress, including the route's starting location, on your device using AsyncStorage. The reviewed route store has no expiry or removal method. Nearby-place cache entries expire after six hours.",
+      "The reviewed dependencies contain no app analytics or crash-reporting SDK. The Razorpay library is bundled, but the reviewed public navigation flow does not start a Razorpay checkout. A permission included by that library is described below.",
     ],
   },
   {
     id: "location-information",
     title: "Location Information",
     paragraphs: [
-      "The supplied APK declares Android's ACCESS_COARSE_LOCATION and ACCESS_FINE_LOCATION permissions. It does not declare ACCESS_BACKGROUND_LOCATION. This establishes the permissions present in this APK, not how the app requests or uses them in each screen.",
-      "The app is presented as a pandal discovery and map experience, so location may be relevant to nearby discovery. The available materials do not verify whether coordinates remain on the device, are transmitted to a service, are retained, or are shared with other users. Do not rely on this draft for those details until the publisher has confirmed the app's live behavior and backend.",
-      "You can review or revoke an app's location permission in Android Settings. If permission is denied, location-dependent features may be limited; the exact behavior in this release needs confirmation.",
+      "Location permission is optional. The signed Android package declares coarse and fine location permissions for location-based features. If you deny permission, you can continue to browse areas and choose locations manually on the map; nearby results and route planning that rely on device location may be limited.",
+      "When you use nearby published-pandal results, coordinates are sent to Supabase so the reviewed database functions can calculate or filter results. Those functions do not persist the coordinates as a user location history. This is limited to the reviewed functions: coordinates are transmitted for these requests, and this does not establish that no provider logs, backups, or other records exist.",
+      "For place searches and routes, coordinates relevant to your request may also be sent to the configured place or routing provider. You can change or revoke the app's location permission in Android Settings.",
+      "The final merged manifest does not declare background location access. The reviewed behavior described here concerns location-based requests initiated while using the app; it is not continuous background tracking.",
     ],
   },
   {
     id: "how-we-use-information",
     title: "How We Use Information",
     paragraphs: [
-      "Pujokriti is designed for pandal discovery, maps, and route planning. Information needed to operate a feature should be used for that feature and related service operation. The available materials do not establish the exact information processed for each feature or whether information is used for diagnostics, abuse prevention, or support.",
-      "No advertising, profiling, or marketing use is documented in the website source provided for this review. The Android app's complete data practices still require confirmation from its source and backend configuration.",
+      "Location and manually selected map points are used to show nearby published pandals, retrieve relevant place information, and calculate a requested route. Route progress is kept on your device so the active route can be represented in the app.",
+      "The reviewed public navigation flow does not use account or profile information and does not initiate a payment checkout. These findings do not describe unrelated or future app features.",
     ],
   },
   {
     id: "maps-and-location-services",
     title: "Maps and Location Services",
     paragraphs: [
-      "The packaged app bundle contains references to OpenStreetMap map tiles and the Nominatim geocoding service. This alone does not establish which requests are active in the released app or whether other map, routing, or geocoding providers are used.",
-      "If the app contacts an external map service, that service may receive technical information such as an IP address and the geographic area requested. Each provider's own terms and privacy practices also apply. Confirm the active tile, geocoding, and routing providers before publication.",
+      "The reviewed implementation uses OpenStreetMap data and its configured map-tile ecosystem, Leaflet for map rendering (loaded from the unpkg CDN), Overpass for nearby-place queries, and Valhalla's OpenStreetMap routing service for walking routes. Vehicle routing and traffic requests use TomTom through Supabase Edge Functions when configured. No user-facing geocoding flow was found in the reviewed implementation.",
+      "OpenStreetMap is a map-data project; it does not operate Leaflet, unpkg, Overpass, Valhalla, TomTom, or Supabase. Requests to tile, place, routing, traffic, or CDN providers may expose technical information such as your IP address and the geographic area, route endpoints, or map tiles requested, as applicable to the request.",
+      "Each external provider handles requests under its own terms and privacy practices. Their operational and security log retention periods are not set by Pujokriti and are not specified here.",
     ],
     links: [
       { href: "https://www.openstreetmap.org/", label: "OpenStreetMap" },
@@ -57,52 +58,57 @@ export const privacyPolicySections: PolicySection[] = [
         label: "OpenStreetMap Foundation privacy policy",
       },
       {
-        href: "https://operations.osmfoundation.org/policies/nominatim/",
-        label: "Nominatim usage policy",
-      },
-      {
         href: "https://operations.osmfoundation.org/policies/tiles/",
         label: "OpenStreetMap tile usage policy",
       },
+      { href: "https://wiki.openstreetmap.org/wiki/Overpass_API", label: "Overpass API" },
+      { href: "https://valhalla.github.io/valhalla/", label: "Valhalla routing engine" },
+      { href: "https://leafletjs.com/", label: "Leaflet" },
+      { href: "https://unpkg.com/", label: "unpkg CDN" },
+      { href: "https://docs.npmjs.com/policies/privacy/", label: "npm privacy policy" },
+      { href: "https://www.tomtom.com/privacy/", label: "TomTom privacy statement" },
+      { href: "https://supabase.com/privacy", label: "Supabase privacy policy" },
     ],
   },
   {
     id: "authentication-and-account-information",
     title: "Authentication and Account Information",
     paragraphs: [
-      "The APK bundle includes Supabase and sign-in references. The Android app source, backend schema, and authentication configuration were not available for review, so the sign-in methods, account fields, features that require an account, and associated database records could not be verified.",
-      "If the app sends account information to Supabase, Supabase processes that information as a service provider under its applicable terms. The publisher must confirm the actual data fields and account flows before treating this description as complete.",
+      "The reviewed public pandal-browsing and navigation flow does not require sign-in or ask for profile information. This does not establish that no other app feature uses an account. This policy does not make an application-wide claim about account features outside the reviewed flow.",
     ],
-    links: [{ href: "https://supabase.com/privacy", label: "Supabase privacy policy" }],
   },
   {
-    id: "sharo-diya-and-public-features",
-    title: "Sharo Diya and Public Features",
+    id: "public-discovery-and-app-features",
+    title: "Public Discovery and App Features",
     paragraphs: [
-      "The supplied product materials show a public pandal map and a Pujokriti app splash screen. They do not establish which public features can be used without an account or the detailed operation of the Sharo Diya experience.",
-      "The APK includes Razorpay libraries, but their presence alone does not show that payments or transactions are enabled. No payment capability is described here as an active feature until the publisher verifies it.",
+      "You can browse pandals, explore areas, manually select a location on the map, and use the reviewed navigation flow without signing in. Nearby results and route planning can use device location if you grant permission.",
+      "The reviewed flow does not initiate Razorpay checkout. The Razorpay library is present in the signed package, but its inclusion alone does not mean a payment is made or payment information is collected in this flow. This policy does not make a claim about payment functionality outside the reviewed flow.",
     ],
   },
   {
     id: "data-storage-and-third-party-services",
     title: "Data Storage and Third-Party Services",
     paragraphs: [
-      "The marketing website is hosted on Vercel. Its hosting infrastructure processes requests needed to deliver the site; the materials reviewed do not establish the exact request-log fields or retention period.",
-      "The APK contains references to Supabase, OpenStreetMap-related services, and Razorpay libraries. These are package-level indicators, not proof that each provider receives personal information in the current release. The publisher must confirm the active integrations and data sent to each provider.",
-      "The country or region where app data is stored, the applicable database access policies, and any backup or log retention periods could not be verified from the materials supplied.",
+      "Active route progress, including its starting location, is stored on your device using AsyncStorage. The route store has no expiry or removal method. Nearby-place cache entries have a six-hour expiry.",
+      "Supabase processes coordinates for the reviewed nearby-pandal queries and provides Edge Functions that call TomTom for vehicle routing and traffic when configured. The reviewed database functions use coordinates to calculate or filter results and do not persist them as a user location history.",
+      "The marketing website is hosted on Vercel. The app and website also make requests to the mapping, place, routing, traffic, and CDN services described above. Supabase, these service providers, and the CDN may keep operational or security logs under their own policies; the app repository does not establish their retention periods.",
+      "The signed APK has Android backup enabled. Its compiled backup rules include shared-preference data and exclude the SecureStore shared-preference path. The available project does not establish how the AsyncStorage route store maps to those backup rules, so this policy does not claim route progress is included in or excluded from Android backups.",
+      "The final merged manifest includes READ_BASIC_PHONE_STATE because of the bundled Razorpay library. No first-party phone-state read was found in the reviewed application code. The presence of this permission is not evidence that Pujokriti reads or transmits phone-state information.",
     ],
     links: [
-      { href: "https://vercel.com/legal/privacy-policy", label: "Vercel privacy policy" },
+      { href: "https://vercel.com/legal/privacy-notice", label: "Vercel privacy policy" },
       { href: "https://supabase.com/privacy", label: "Supabase privacy policy" },
-      { href: "https://razorpay.com/privacy/", label: "Razorpay privacy policy" },
+      { href: "https://www.tomtom.com/privacy/", label: "TomTom privacy statement" },
+      { href: "https://docs.npmjs.com/policies/privacy/", label: "npm privacy policy" },
     ],
   },
   {
     id: "data-retention-and-deletion",
     title: "Data Retention and Deletion",
     paragraphs: [
-      "The account, report, group, server-log, and backup retention rules have not been supplied for review. No specific retention period or deletion outcome is promised in this draft.",
-      "Before publication, the publisher must confirm what records are retained, how retention is decided, whether account deletion is available, what related records it removes, and whether logs or backups persist separately. A contact-based deletion request process also needs to be established and linked to the verified privacy contact.",
+      "The route store has no expiry or removal method, so active route progress is not automatically removed when you close the app or finish a route. Nearby-place cache entries expire after six hours.",
+      "The reviewed Supabase database functions do not persist query coordinates as a user location history. This finding does not cover operational logs, backups, other records, or the retention practices of external providers. Their retention periods have not been established here, and Pujokriti cannot promise immediate or complete deletion from their logs or backups.",
+      "To ask about, correct, or request deletion of applicable information, contact the publisher using the privacy email in Contact Us. The publisher will assess the request and explain any applicable limits. No retention period, response deadline, or deletion outcome is promised where it has not been verified.",
     ],
   },
   {
@@ -110,49 +116,38 @@ export const privacyPolicySections: PolicySection[] = [
     title: "Security",
     paragraphs: [
       "We take reasonable technical and organizational measures to help protect information processed through Pujokriti. However, no method of transmitting or storing information can be guaranteed to be completely secure.",
-      "No additional security controls or independent audits were verified in the materials available for this review.",
+      "Information sent to external providers is also subject to their security practices. This policy does not promise end-to-end encryption or that information can never be exposed.",
     ],
   },
   {
     id: "childrens-privacy",
     title: "Children's Privacy",
     paragraphs: [
-      "Pujokriti is presented as a cultural discovery application. The materials available do not establish a specific minimum age or a child-directed audience.",
-      "A parent or guardian who believes a child has provided personal information inappropriately should contact the publisher using the privacy contact below. The publisher must configure that contact and confirm the process for handling such requests before publication.",
+      "Pujokriti is a cultural discovery application. This policy does not set an age threshold or make a claim that the app is designed exclusively for adults.",
+      "A parent or guardian who has a privacy concern or believes a child has provided personal information can contact the publisher at the privacy email in Contact Us. The publisher will review the concern and explain any appropriate next steps; no specific removal deadline is promised.",
     ],
   },
   {
     id: "your-privacy-rights",
     title: "Your Privacy Rights",
     paragraphs: [
-      "Depending on applicable law and your circumstances, you may be able to ask about, access, correct, or request deletion of personal information, or raise a privacy concern. You may also revoke Android permissions through device settings; doing so may limit related features.",
-      "To make a privacy request, contact the publisher at the privacy address listed below. That address and the process for handling requests must be confirmed before this policy is published. No response deadline or specific legal outcome is promised here.",
+      "Depending on applicable law and your circumstances, you may be able to request access to, correction of, or deletion of personal information, or raise a privacy concern.",
+      "To make a request, email the privacy contact in Contact Us. Describe the request and the Pujokriti feature involved; avoid including sensitive information that is not needed to identify the issue. The publisher may need sufficient information to understand and assess the request. No response deadline or particular legal outcome is promised here.",
+      "You can also change or revoke Android location permission in your device settings. Location-based features may be limited when permission is off.",
     ],
   },
   {
     id: "changes-to-this-policy",
     title: "Changes to This Policy",
     paragraphs: [
-      "This policy may be updated if the application, its data practices, or applicable requirements change. The publisher should update the date shown above and communicate material changes where reasonably appropriate.",
+      "This policy may be updated when the application, its information practices, or applicable requirements change. The last-updated date will be revised when the policy changes. Material changes may be communicated through the website or app where reasonably appropriate.",
     ],
   },
   {
     id: "contact-us",
     title: "Contact Us",
     paragraphs: [
-      "For questions or privacy requests, contact the publisher using the details below. The missing publisher and contact details are intentionally shown as unresolved fields until supplied by the application owner.",
+      "For privacy questions, requests to access, correct, or delete applicable information, or concerns about a child's privacy, contact the publisher using the email address below. A monitored privacy email must be configured before this policy is ready for publication.",
     ],
   },
-];
-
-export const privacyPolicyReviewItems = [
-  "Publisher's legal name and any required business address.",
-  "A monitored privacy email and a confirmed process for access, deletion, and children's privacy requests.",
-  "Effective date and last-updated date for the published policy.",
-  "Which app features require sign-in, exact account fields, and the Supabase records and access policies involved.",
-  "Whether precise location is transmitted or stored, and the behavior when location permission is denied.",
-  "Whether groups or location sharing are present in the released app; if so, who can see shared data, how sharing stops, and how expiry and residual logs/backups work.",
-  "Which map tiles, geocoding, and routing providers are active, and whether Razorpay, analytics, or crash-reporting services receive app data.",
-  "Retention and deletion behavior for accounts, reports, groups, operational logs, and backups.",
-  "Why READ_BASIC_PHONE_STATE and other non-obvious Android permissions are included and whether related information is read or transmitted.",
 ];

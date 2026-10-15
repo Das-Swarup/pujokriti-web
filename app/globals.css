@@ -1072,15 +1072,6 @@ p {
   font-size: 0.82rem;
 }
 
-.policy-review {
-  max-width: 920px;
-  margin-block: 2rem 0;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  border-left: 3px solid var(--red);
-  background: #eee5d8;
-}
-
-.policy-review-label,
 .policy-side-label,
 .policy-section-index {
   color: var(--red-dark);
@@ -1089,41 +1080,10 @@ p {
   letter-spacing: 0.15em;
 }
 
-.policy-review-label {
-  margin-bottom: 0.8rem;
-}
-
-.policy-review h2 {
-  margin-bottom: 0.7rem;
-  font-family: var(--serif);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-}
-
-.policy-review > p:not(.policy-review-label) {
-  max-width: 780px;
-  margin-bottom: 0.8rem;
-  color: #514b44;
-  font-size: 0.85rem;
-  line-height: 1.75;
-}
-
-.policy-review ul,
 .policy-article ul {
   padding-left: 1.2rem;
 }
 
-.policy-review ul {
-  display: grid;
-  gap: 0.4rem;
-  margin: 0.8rem 0 0;
-  color: #514b44;
-  font-size: 0.82rem;
-  line-height: 1.6;
-}
-
-.policy-review li::marker,
 .policy-article li::marker {
   color: var(--red);
 }
@@ -1759,15 +1719,6 @@ p {
   .policy-dates {
     gap: 1rem 1.7rem;
     margin-top: 1.4rem;
-  }
-
-  .policy-review {
-    margin-top: 1.4rem;
-    padding: 1.1rem;
-  }
-
-  .policy-review ul {
-    font-size: 0.77rem;
   }
 
   .policy-layout {
