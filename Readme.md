@@ -41,7 +41,11 @@ No pandal photography, ratings, visitor counts, or app capabilities beyond the s
 
 ## Footer links
 
-No privacy policy or support address was supplied, so the site does not render broken links. Before public launch, set `NEXT_PUBLIC_PRIVACY_POLICY_URL` and/or `NEXT_PUBLIC_SUPPORT_EMAIL` to real destinations. See [`.env.example`](./.env.example).
+The site privacy policy is at `/privacy-policy` and is linked from the navigation and footer. Its publication metadata is centralized in `site-config.json` under `privacy`: supply the publisher's legal name, any required address, a monitored privacy email, and verified effective/last-updated dates. The page is intentionally marked as a draft (`privacy.draft: true`) and sends `noindex` metadata until the policy owner confirms the outstanding app/backend practices and fills those details. Only mark it final after the review checklist has been resolved. The Android source, Supabase schema, database policies, and retention configuration were not included in this repository; see the on-page review checklist before publication.
+
+The optional support address can be set as `NEXT_PUBLIC_SUPPORT_EMAIL` (see [`.env.example`](./.env.example)). Do not treat it as the privacy contact unless the publisher verifies that it is monitored for privacy requests.
+
+For the supplied APK, Android SDK inspection confirmed declarations for coarse/fine location, internet, biometrics, NFC, and basic phone state; it did not declare background location. Its compiled JavaScript bundle contains Supabase, sign-in, OpenStreetMap/Nominatim, report/group, and Razorpay references. These package-level indicators do not prove which services are active or what data is sent. The policy deliberately identifies them as needing owner/source/backend confirmation rather than making unsupported claims.
 
 ## Deployment
 

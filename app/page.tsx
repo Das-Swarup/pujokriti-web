@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUpRight, MapPinned, Navigation2, Sparkles } from "lucid
 import { DownloadButton } from "@/components/download-button";
 import { FAQ } from "@/components/faq";
 import { Navigation } from "@/components/navigation";
+import { SiteFooter } from "@/components/site-footer";
 import { isApkAvailable } from "@/lib/apk";
 import { siteConfig } from "@/lib/site-config";
 import logo from "@/assets/pujokriti-logo.png";
@@ -259,41 +260,7 @@ export default function Home() {
         <FAQ />
       </main>
 
-      <footer className="site-footer">
-        <div className="footer-main">
-          <div className="footer-brand">
-            <Image alt="Pujokriti" className="footer-logo" height={52} src={logo} width={52} />
-            <p>A field guide to finding your way through Pujo.</p>
-          </div>
-          <div className="footer-links">
-            <div>
-              <p className="footer-label">EXPLORE</p>
-              <a href="#download">Download app <ArrowUpRight aria-hidden="true" size={13} /></a>
-              <a href="#experience">The experience <ArrowUpRight aria-hidden="true" size={13} /></a>
-            </div>
-            <div>
-              <p className="footer-label">GET IN TOUCH</p>
-              {siteConfig.privacyPolicyUrl && (
-                <a href={siteConfig.privacyPolicyUrl} rel="noreferrer" target="_blank">
-                  Privacy policy <ArrowUpRight aria-hidden="true" size={13} />
-                </a>
-              )}
-              {siteConfig.supportEmail && (
-                <a href={`mailto:${siteConfig.supportEmail}`}>
-                  Contact / support <ArrowUpRight aria-hidden="true" size={13} />
-                </a>
-              )}
-              {!siteConfig.privacyPolicyUrl && !siteConfig.supportEmail && (
-                <span className="footer-unconfigured">Links to be added before launch</span>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Pujokriti</span>
-          <span>Made for the days that become stories.</span>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
