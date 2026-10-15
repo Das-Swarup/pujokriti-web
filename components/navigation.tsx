@@ -12,9 +12,10 @@ type NavigationProps = {
 };
 
 const links = [
-  { href: "#experience", label: "The experience" },
-  { href: "#features", label: "Features" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#experience", label: "The experience" },
+  { href: "/#features", label: "Features" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/privacy-policy", label: "Privacy" },
 ];
 
 export function Navigation({ available, logo }: NavigationProps) {
@@ -27,7 +28,7 @@ export function Navigation({ available, logo }: NavigationProps) {
   return (
     <header className="site-header">
       <div className="nav-shell">
-        <a aria-label="Pujokriti home" className="brand" href="#top" onClick={closeMenu}>
+        <a aria-label="Pujokriti home" className="brand" href="/" onClick={closeMenu}>
           <Image alt="" className="brand-mark" height={48} priority src={logo} width={48} />
           <span className="brand-word">Pujokriti</span>
         </a>
