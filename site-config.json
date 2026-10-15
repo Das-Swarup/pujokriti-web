@@ -1,0 +1,9 @@
+{
+  "name": "Pujokriti",
+  "description": "Discover remarkable Durga Puja pandals, explore locations on a map, and plan your way through the celebrations.",
+  "download": {
+    "path": "/downloads/pujokriti.apk",
+    "filename": "Pujokriti.apk",
+    "expectedFile": "public/downloads/pujokriti.apk"
+  }
+}
