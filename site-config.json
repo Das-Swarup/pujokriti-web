@@ -3,12 +3,12 @@
   "description": "Discover remarkable Durga Puja pandals, explore locations on a map, and plan your way through the celebrations.",
   "canonicalUrl": "https://pujokriti-web.vercel.app",
   "privacy": {
-    "publisherName": "",
-    "publisherAddress": "",
+    "publisherName": "Arijit Roy",
+    "tradeName": "Siliguri Sutra",
+    "publisherAddress": "Saradapally, Tilak Sadhu More, Siliguri, West Bengal – 734006",
     "contactEmail": "",
-    "effectiveDate": "",
-    "lastUpdated": "",
-    "draft": true
+    "effectiveDate": "2026-10-15",
+    "lastUpdated": "2026-10-15"
   },
   "download": {
     "path": "/downloads/pujokriti.apk",
