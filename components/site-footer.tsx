@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import logo from "@/assets/pujokriti-logo.png";
 
-export function SiteFooter() {
+export function SiteFooter({ darkTheme = false }: { darkTheme?: boolean }) {
   return (
-    <footer className="site-footer">
+    <footer className={`site-footer${darkTheme ? " site-footer-dark" : ""}`}>
       <div className="footer-main">
         <div className="footer-brand">
           <Image alt="Pujokriti" className="footer-logo" height={52} src={logo} width={52} />
@@ -19,6 +19,9 @@ export function SiteFooter() {
             </a>
             <a href="/#experience">
               The experience <ArrowUpRight aria-hidden="true" size={13} />
+            </a>
+            <a href="/#kali-pujo">
+              Kali Pujo <ArrowUpRight aria-hidden="true" size={13} />
             </a>
           </div>
           <div>

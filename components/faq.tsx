@@ -2,7 +2,7 @@ const questions = [
   {
     question: "What is Pujokriti?",
     answer:
-      "Pujokriti is a Durga Puja companion for discovering pandals on a map and planning visits around the celebrations.",
+      "Pujokriti is a festival companion for discovering Durga Pujo and Kali Pujo pandals on a map and planning visits around the celebrations.",
   },
   {
     question: "How do I download Pujokriti on Android?",

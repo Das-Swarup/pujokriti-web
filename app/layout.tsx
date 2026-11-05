@@ -4,23 +4,43 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.canonicalUrl),
-  title: "Pujokriti — Find the pandals. Follow the feeling.",
+  title: "Pujokriti — Discover Durga & Kali Pujo Pandals",
   description: siteConfig.description,
+  alternates: {
+    canonical: siteConfig.canonicalUrl,
+  },
   applicationName: siteConfig.name,
   icons: {
     icon: "/favicon.png",
   },
   openGraph: {
-    title: "Pujokriti — Find the pandals. Follow the feeling.",
+    title: "Pujokriti — Discover Durga & Kali Pujo Pandals",
     description: siteConfig.description,
     type: "website",
+    url: siteConfig.canonicalUrl,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/favicon.png",
+        width: 1024,
+        height: 1024,
+        alt: "Pujokriti",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Pujokriti — Discover Durga & Kali Pujo Pandals",
+    description: siteConfig.description,
+    images: ["/favicon.png"],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7f3eb",
+  themeColor: "#292B2F",
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

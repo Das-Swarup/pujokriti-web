@@ -8,17 +8,19 @@ import { siteConfig } from "@/lib/site-config";
 
 type NavigationProps = {
   available: boolean;
+  darkTheme?: boolean;
   logo: StaticImageData;
 };
 
 const links = [
-  { href: "/#experience", label: "The experience" },
-  { href: "/#features", label: "Features" },
+  { href: "/#experience", label: "Our story" },
+  { href: "/#kali-pujo", label: "Kali Pujo" },
+  { href: "/#journey", label: "The journey" },
   { href: "/#faq", label: "FAQ" },
   { href: "/privacy-policy", label: "Privacy" },
 ];
 
-export function Navigation({ available, logo }: NavigationProps) {
+export function Navigation({ available, darkTheme = false, logo }: NavigationProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   function closeMenu() {
@@ -26,7 +28,7 @@ export function Navigation({ available, logo }: NavigationProps) {
   }
 
   return (
-    <header className="site-header">
+    <header className="site-header" data-theme={darkTheme ? "night" : undefined}>
       <div className="nav-shell">
         <a aria-label="Pujokriti home" className="brand" href="/" onClick={closeMenu}>
           <Image alt="" className="brand-mark" height={48} priority src={logo} width={48} />
