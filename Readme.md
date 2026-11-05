@@ -1,6 +1,6 @@
 # Pujokriti
 
-A mobile-first, editorial landing page for the Pujokriti Durga Puja companion app, built with Next.js, TypeScript, Tailwind CSS, and Lucide.
+A mobile-first, editorial landing page for the Pujokriti Durga Pujo and Kali Pujo companion app, built with Next.js, TypeScript, Tailwind CSS, and Lucide.
 
 ## Run locally
 
@@ -27,17 +27,15 @@ The check downloads the deployed asset, compares its size and SHA-256 digest wit
 
 ## Supplied assets
 
-All supplied images are kept in `assets/` and used directly by the landing page:
+The landing page uses supplied app screens directly:
 
-- `pujokriti-logo.png` — brand mark in the navigation and footer.
-- `IMG_2507.PNG` — app splash screen in the Sharo Diya / community section; served from an unchanged copy in `public/images/`.
-- `IMG_2509.PNG` — map and nearby-pandal discovery in the hero and product sections; served from an unchanged copy in `public/images/`.
-- `IMG_2511.PNG` — route planning feature; served from an unchanged copy in `public/images/`.
-- `IMG_2515.PNG`, `IMG_2516.PNG`, and `IMG_2517.PNG` — route, pandal detail, and route-options screens in the product gallery; served from unchanged copies in `public/images/`.
+- `pujokriti-logo.png` — the Pujokriti brand mark in the navigation and footer.
+- `IMG_2509.PNG` — the original Durga Pujo map, used in the story and shared-experience chapters; served from `public/images/`.
+- `IMG_2511.PNG` — the nearby-pandals view with place filters and a visitor-report label; used to illustrate nearby essentials and report context.
+- `IMG_4260.PNG`–`IMG_4268.PNG` — supplied Kali Pujo map, pandal details, route-planning, and active-route screens used across the hero and product journey. Their normalized copies in `public/images/` retain the original aspect ratio.
 - `public/favicon.png` — copy of the supplied logo used as the browser icon.
-- `IMG_2518.PNG` — app-icon artwork; omitted from the page because the supplied logo and splash screen already represent the brand.
 
-No pandal photography, ratings, visitor counts, or app capabilities beyond the supplied screenshots and brief are invented.
+Visitor reports are presented as available community context, not a live crowd reading. Nearby road-traffic data is distinguished from pandal crowd density. No pandal photography, ratings, visitor counts, or app capabilities beyond the supplied screenshots and brief are invented.
 
 ## Privacy policy
 
